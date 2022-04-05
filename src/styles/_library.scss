@@ -19,7 +19,7 @@
 	align-items: center;
 	cursor: pointer;
 	&:hover {
-		background: rgb(143, 199, 156);
+		background: rgb(185, 218, 193);
 	}
 	img {
 		width: 30%;
@@ -54,4 +54,8 @@
 		background-color: rgba(155, 155, 155, 0.5);
 		border: transparent;
 	}
+}
+
+.selected {
+	background: rgb(120, 231, 114);
 }
