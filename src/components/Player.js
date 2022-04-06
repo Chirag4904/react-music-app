@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	faPlay,
@@ -8,6 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const Player = ({
+	setSongs,
 	setCurrentSong,
 	songs,
 	currentSong,
@@ -17,6 +18,22 @@ const Player = ({
 	setSongInfo,
 	songInfo,
 }) => {
+	useEffect(() => {
+		const newSongs = songs.map((song) => {
+			if (song.id === currentSong.id) {
+				return {
+					...song,
+					active: true,
+				};
+			} else {
+				return {
+					...song,
+					active: false,
+				};
+			}
+		});
+		setSongs(newSongs);
+	}, [currentSong]);
 	//Time refactor
 	const getTime = (time) => {
 		return (
