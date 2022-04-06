@@ -6,7 +6,7 @@ import {
 	faAngleRight,
 	faPause,
 } from "@fortawesome/free-solid-svg-icons";
-
+import { playAudio } from "../util";
 const Player = ({
 	setSongs,
 	setCurrentSong,
@@ -65,16 +65,17 @@ const Player = ({
 		if (direction === "skip-back") {
 			if ((currentIndex - 1) % songs.length === -1) {
 				setCurrentSong(songs[songs.length - 1]);
-				return;
+			} else {
+				setCurrentSong(songs[(currentIndex - 1) % songs.length]);
 			}
-			setCurrentSong(songs[(currentIndex - 1) % songs.length]);
 		}
+		playAudio(isPlaying, audioRef);
 	};
 
 	return (
 		<div className="player">
 			<div className="time-control">
-				<p>{getTime(songInfo.currentTime)}</p>
+				<p>{songInfo.duration ? getTime(songInfo.currentTime) : "0:00"}</p>
 				<input
 					onChange={dragHandler}
 					min={0}

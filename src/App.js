@@ -4,7 +4,7 @@ import "./styles/app.scss";
 import Player from "./components/Player";
 import Song from "./components/Song";
 import Library from "./components/Library";
-import data from "./util";
+import data from "./data";
 import Nav from "./components/Nav";
 
 function App() {
